@@ -1,0 +1,44 @@
+
+Session Scope Bean
+ 
+ Session Scope 에서 Bean 을 정의하면
+ client 의 browser 에서 server 쪽으로 최소의 request 를 보낼 때
+ Bean 객체가 주입됨 <- 주입(Injection) 만 이루어지지
+                       자동으로 session 영역에 저장되지는 않음
+                       
+Java 방식 : @SessionScope 어노테이션 사용
+XML  방식 : scope="session" 설정 
+
+
+
+
+                  
+                       
+                       
+                       
+                       
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

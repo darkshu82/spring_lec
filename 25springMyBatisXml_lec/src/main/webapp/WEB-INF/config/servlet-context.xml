@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xmlns:beans="http://www.springframework.org/schema/beans"
+			 xmlns:context="http://www.springframework.org/schema/context"			 
+			 xsi:schemaLocation="http://www.springframework.org/schema/mvc
+			 					 http://www.springframework.org/schema/mvc/spring-mvc.xsd
+			 					 http://www.springframework.org/schema/beans
+			 					 http://www.springframework.org/schema/beans/spring-beans.xsd
+			 					 http://www.springframework.org/schema/context
+			 					 http://www.springframework.org/schema/context/spring-context.xsd">
+                        
+    <!-- 
+      scan 한 package 에 작성한 클래스 중에서
+      @Controller 라는 Annotation 이 설정된 클래스들을
+      Spring framework 가
+      Controller 로 인식해서 메모리에 loading 하게 설정하기
+                                ㄴ 해당 클래스(Controller Class)의 객체를 생성함   
+    -->                            
+    <annotation-driven />
+    
+    <!-- 
+        scan 할 bean(bean 클래스들은 spring framework 가 자동으로 객체를 생성함) 
+        들이 작성된 package 들 지정하기 
+    -->
+    <context:component-scan base-package="com.tjoeun.controller"/>
+  
+    <!-- 
+      Controller 에서 작성한 메소드의 return 값에서
+      /WEB-INF/views/index.jsp  :  /WEB-INF/views/ 이 부분과
+                                       .jsp 이 부분을 접두사, 접미사로 
+                                        설정해서 return 값에는
+                                        jsp 파일 이름만 적어도 되도록 설정하기 
+     -->
+    <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <beans:property name="prefix" value="/WEB-INF/views/"/>
+      <beans:property name="suffix" value=".jsp"/>
+    </beans:bean>     
+    
+    <!-- 이미지, 음악파일, js, css 와 같은 파일을 저장하는 경로 지정하기 -->
+    <resources mapping="/**" location="/resources/" />
+    
+    <!-- 
+       properties  파일에 작성한 내용을 xml 에서 사용할 수 있도록 Bean 정의하기
+     -->
+    <beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+      <beans:property name="location">
+         <beans:value>/WEB-INF/properties/oracle.properties</beans:value>
+      </beans:property>
+    </beans:bean> 
+     
+    <!--  
+        BasicDataSource 라는 클래스를 Bean 으로 등록하기
+	    database 접속 관리 code 작성
+     -->
+    <beans:bean class="org.apache.commons.dbcp2.BasicDataSource" id="basicDataSource">
+        <beans:property name="driverClassName" value="${database.name}" />
+	    <beans:property name="url" value="${database.url}" />
+	    <beans:property name="username" value="${database.username}" />
+	    <beans:property name="password" value="${database.password}" />
+    </beans:bean>     
+    
+    <!-- 
+        Database 접속 정보와 mapper 파일을 관리하는 Bean 등록하기
+        SqlSessionFactoryBean
+     -->
+     <beans:bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+         <beans:property name="dataSource" ref="basicDataSource" />   
+         <beans:property name="mapperLocations" value="/WEB-INF/mapper/*.xml" />   
+     </beans:bean>
+     
+     <!-- 
+       cf) Java 방식 : MapperInterface 를 제네릭으로 하는 
+                       MapperFactoryBean 객체를 Bean 으로 설정함
+                       MapperFactoryBean<MapperInterface>
+                       
+        Xml 방식     : SqlSessionTemplate Bean 객체를 사용함                
+      -->
+    <beans:bean class="org.mybatis.spring.SqlSessionTemplate"  id="sqlSessionTemplate">
+        <beans:constructor-arg index="0" ref="sqlSessionFactoryBean"/>    
+    </beans:bean>
+</beans:beans>
+
+
+
+

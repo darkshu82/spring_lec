@@ -1,0 +1,40 @@
+
+ValidationCustomMessage
+
+  JSR-303 / Hibernate 에서 제공하는 
+  Annotation 중에서 일부 메세지는 사용자가 
+  설정해서 사용할 수 있음
+  
+  
+  Properties 를 사용해서 메세지 설정하기
+  
+  @Valid 를 수행하면 오류 정보가 BindingResult 객체에 저장되는데
+  codes[0] 으로 code 를 가져와서 
+  properties 파일에 아래와 같은 형식으로 설정할 수 있음
+  
+  에러종류.Bean이름.멤버변수이름=에러메세지
+  
+  codes[0] <-- Size.developer.name
+  codes[0] <-- Max.developer.age
+  
+  Size.developer.name=이름은 2 글자에서 4 글자 사이로만 입력해 주세요
+  Max.developer.name=나이는 150 세 이하로만 입력해 주세요
+  
+  <spring:message code="${errors.getFieldError('name').codes[0]}" />
+  
+  
+  validation 에 통과하지 못해서 다시 입력 페이지로 온 경우, 
+  Form 태그의 input 태그에 입력한 내용 유지하기
+    ㄴ 입력 화면으로 전달된 Bean(Developer developer) 객체에
+       input 태그에 입력한 값을 주입해서 사용함
+         ㄴ Spring Custom Form Tag 사용
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

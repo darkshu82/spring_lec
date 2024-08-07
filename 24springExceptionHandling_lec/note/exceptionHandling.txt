@@ -1,0 +1,22 @@
+
+
+Exception Handling
+  web application 에서 오류 발생시 보여줄 jsp 를 작성하고
+  이 jsp 로 응답결과를 생성해서 client 의 browser 로 전송함
+
+  @ExceptionHandler 가 설정된 메소드는
+  Controller 마다 작성해야 됨
+  
+  Global Exception Handler 를 사용하면 
+  각 Controller 마다 발생 가능한 예외들이 있는 경우,
+  한 번만 작성해서 사용할 수 있음
+  
+  Global Exception Handler 를 설정한 경우에도
+  Controller 마다 작성한 @ExceptionHandler 가 우선 적용됨
+  
+  
+  
+  
+  
+  
+  

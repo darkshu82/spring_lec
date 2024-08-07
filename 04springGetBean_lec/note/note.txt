@@ -1,0 +1,10 @@
+
+		Controller 의 메소드의 parameter 에서
+		request scope  에 있는 값을 꺼내서 사용할 때
+		개별 값을 가져올 때는
+		@RequestParam 을 사용하고
+		
+		객체를 주입받으려면 (Injection)
+		(객체는 request scope 에 생성되지 않고
+		 Spring Framework 가 관리하는 Memory 영역에 생성됨)
+		@ModelAttribute 를 사용함

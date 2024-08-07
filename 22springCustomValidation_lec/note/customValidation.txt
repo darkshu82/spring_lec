@@ -1,0 +1,84 @@
+ 
+ Custom Validation 
+   ㄴ Validator 라는 interface 를 implements 해야 됨
+   
+   메소드
+   
+   supports() : 유효성 검사 대상 객체가 유효성 검사를 할 수 있는 객체인지 확인함
+   
+   validate() : 유효성 검사를 수행함
+   
+   Validator 라는 interface 를 
+   implements 한 클래스에서 유효성 검사를 수행하고
+   이러한 클래스를 validator 라고 함
+     ㄴ validator 클래스를 Controller 에서 등록해 줌 
+             ㄴ : initBinder() 라는 메소드에서 등록함
+                  ㄴ parameter 로 WebDataBinder 객체를 주입 받음
+                validator 클래스의 객체를 생성하고
+                parameter 로 주입받은 WebDataBinder 객체에 있는 
+                setValidator() 라는 메소드를 호출함
+                    : argument 에 validator 클래스의 객체를 넣어줌 
+                  ㄴ validator 가 하나이면 setValidator() 를 호출하고
+                  ㄴ validator 가 여러 개(하나 이상)이면 addValidators() 를 호출하고
+                  ㄴ initBinder() 메소드에는 @InitBinder 어노테이션을 설정함
+                  
+ *********************************************************************************                    
+   setValidator() 를 사용하면 
+   custom validator 를 적용할 때 기존 방법(JSR-303/JSR-380)이 적용 안 됨
+   addValidators() 를 사용하면 
+   custom validator 를 적용할 때 기존 방법(JSR-303/JSR-380)도 같이 적용됨
+ *********************************************************************************                 
+  
+  @InitBinder             
+  protected void initBinder(WebDataBinder binder){
+    DeveloperValidator validator1 = new DeveloperValidator();
+    binder.setValidator(validator1);  
+  }
+                
+
+  ValidationUtils 의 static 메소드
+                      ㄴ 설정한 값에 대해서 유효성 검사를 함
+                      
+  rejectIfEmpty(에러객체,멤버변수이름,에러코드이름)
+    ㄴ 값이 비어있는지 확인함 : 공백문자도 글자수에 포함시킴
+    
+  rejectIfEmptyOrWhitespace(에러객체,멤버변수이름,에러코드이름)
+    ㄴ 값이 비어있거나 공백문자가 있는지 확인함
+    
+    입력한 값이 조건에 맞지 않으면
+    에러 객체에 에러 정보를 저장함
+     properties 파일에 에러메세지 작성할 때 아래와 같이 작성함
+     에러코드이름.객체이름.멤버변수이름=에러메세지 
+                            
+  
+  Errors 객체의 rejectValue() 메소드
+    ㄴ 유효성 조건을 사용자가 만들 때 호출함
+       if 문으로 조건을 지정하고 
+       유효성 조건을 위배하면 오류 정보를 지정함
+       
+       rejectValue("멤버변수이름", "에러코드이름");
+       
+      입력한 값이 조건에 맞지 않으면
+      에러 객체에 에러 정보를 저장함
+      properties 파일에 에러메세지 작성할 때 아래와 같이 작성함
+      에러코드이름.객체이름.멤버변수이름=에러메세지 
+       
+       
+       
+       
+       
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+               
+             
+             
+             
+   

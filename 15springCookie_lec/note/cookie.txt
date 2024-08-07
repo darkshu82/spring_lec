@@ -1,0 +1,21 @@
+
+Cookie
+
+client 의 browser 가 최초로
+server 쪽으로 request 를 보내면
+server 에서 cookie 를 만들고
+server 가 client(browser) 쪽으로 response 를 보낼 때
+이 cookie 를 실어서 보내고
+이 cookie 는 client 의 browser에 저장됨
+
+client 의 browser 가 다시
+server 쪽으로 request 를 보내면
+server 는 이 cookie 를 확인해서
+어떤 client 인지 구별함
+
+Spring Framework(Spring MVC) 에서 cookie 정보를 주입 받아서 사용함
+  ㄴ @CookieValue 어노테이션 사용
+
+
+
+ 

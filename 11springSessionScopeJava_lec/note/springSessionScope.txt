@@ -1,0 +1,53 @@
+
+Session Scope
+
+ client 의 browser 가 sever 쪽으로
+ 최초로 request 를 보내면
+ server 쪽에
+ browser 당 하나씩 memory 공간을 할당함
+ Request Scope 는 request 가 발생할
+ 때마다 새로 생성되는데
+ Session Scope 는 request 가 새로 
+ 발생해도 같은 memory 공간을 사용함
+ 이 Scope 는 browser 를 종료할 때까지
+ 사용할 수 있음
+ (client)browser 가 
+ 최초로 request 를 보내고
+ 이 browser 를 닫을 때까지 유지되는
+ scope 를 Session Scope 라고 함
+ 
+ Session Scope 에 올린 data(객체/literal)를 사용하려고 할 때, 
+ 메소드의 parameter에 @SessionAttribute 를 설정하면 Session Scope 에 저장된(올린) 
+ 객체(Bean:Spring Framework 가 관리하는 객체) 를 주입(Injection)받을 수 있음
+ 
+ 
+ @ModelAttribute 를 사용해서 주입받는 Bean 은 자동으로 Request Scope 에 저장되고
+ Request Scope 로부터 주입받게 됨
+ 이 경우, @ModelAttribute 를 사용해서 주입받는 Bean 을
+ @SessionAttributes 로 지정하면
+ Request Scope 가 아니고 Session Scope 로부터  주입받게 됨
+ 이 경우, @ModelAttribute 를 사용해서 해당 객체를 생성해서 반환하는 메소드를
+ 작성해야 됨 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

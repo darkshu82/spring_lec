@@ -1,0 +1,26 @@
+
+
+Message
+
+Properties 파일을 Message 로 등록해서 다국어 처리가 가능하도록 함
+MessageSource 객체를 사용해서 properties 파일을 등록하면
+
+Java 설정 방식
+Message 로 등록하게 됨 (ServletAppContext.java 에서 등록함)
+   ㄴ ReloadableResourceBundleMessageSource 를 사용함
+멤버변수로 MessageSource 를 주입받아서 Message 로 등록된 데이터를 사용함
+   ㄴ @Autowired           (Locale 을 지정하면 다국어 처리도 가능함)
+      ReloadableResourceBundleMessageSource res;
+   
+   
+Xml 설정 방식
+Message 로 등록하게 됨 (servlet-context.xml 에 등록함)
+    ㄴ ReloadableResourceBundleMessageSource 를 사용  
+    
+    
+    
+    
+    
+    
+    
+    

@@ -1,0 +1,27 @@
+
+Redirect
+  server 측에서 client 측으로 
+  request address(URL) 를 보내주면 (response)
+  client 의 browser 가 이를 받아서
+  다시 server 로 request(address:URL) 를 보냄
+    ㄴ client 의 browser 가 serve 측으로
+       request 를 보낸다는 것을 인식함
+         ㄴ browser 의 주소창에는 이 주소(URL)가 표시됨
+     
+  Redirect 방식에서는 새로운 request 가 발생하므로
+  HttpServletRequest 객체가 메모리에서 삭제되었다가
+  다시 생성됨     
+     
+     
+Forward
+  server 측에서 client 측으로 
+  request address(URL) 를 보내주지 (response) 않음     
+    ㄴ client 측의 browser 는 page(URL) 가 이동하는지 모름
+    ㄴ browser 의 주소창에는 이 주소(URL)가 표시되지 않음
+  
+  Forward 방식에서는 새로운 request 가 발생하지 않으므로
+  이전 request 발생시 생성되었던 
+  HttpServletRequest 객체가 메모리에서 삭제되지 않고 유지됨 
+  
+  
+  

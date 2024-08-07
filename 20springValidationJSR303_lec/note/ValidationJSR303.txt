@@ -1,0 +1,38 @@
+
+ JSR-303
+ 
+ @AssertTrue  : true 가 아닌 값인 경우 오류 발생함
+ @AssertFalse : false 가 아닌 값인 경우 오류 발생함
+ 
+ @Max(값) / @Min(값)
+ 
+ @DecimalMax(value=값, inclusive=true/false)
+   ㄴ value=값, inclusive=true - 값 이하
+   ㄴ value=값, inclusive=false - 값 미만
+   
+ @DecimalMin(value=값, inclusive=true/false)
+   ㄴ value=값, inclusive=true - 값 이상
+   ㄴ value=값, inclusive=false - 값 초과 
+ 
+ 
+ @Null     :  null 만 허용 - 값이 입력되면 오류 발생
+ @NotNull  :  "", " " 허용 / null 은 허용 안 함 - 값이 입력되지 않으면 오류 발생
+ @NotEmpty :  null, "", [](비어있는 List) 은 허용 안 함 / " " 은 허용
+ @NotBlank :  null, "", " " 모두 허용 안 함
+ 
+ @Digits(정수자릿수(integer), 실수자릿수(fraction))
+   ㄴ 지정한 자릿수를 넘으면 오류 발생함
+ 
+ @Size(min=최소글자수, max=최대글자수)
+   ㄴ 지정한 자릿수보다 짧거나 길면 오류 발생함
+ 
+ @Pattern(regexp=정규식)
+   ㄴ 지정한 정규식에 맞지 않으면 오류 발생함
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 

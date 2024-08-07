@@ -1,0 +1,8 @@
+
+Properties
+
+web application (web project) 을 실행할 때
+변하지 않고 유지되는 값들을
+properties 파일에 작성한 후 이를 사용함
+
+

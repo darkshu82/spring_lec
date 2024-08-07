@@ -1,0 +1,11 @@
+
+RequestScopeBean
+
+Controller 의 메소드에서
+parameter level 에서 @ModelAttribute 로 Bean 을 주입받으면
+Model 의 addAttribute() 가 자동으로 호출되지만,
+멤버변수 레벨에서 @Autowired 로 Bean 을 주입받으면
+Model 의 addAttribute() 가 자동으로 호출되지 않음
+  ㄴ parameter 에서 Model 을 선언해서 주입받은 후
+     model.addAttribute() 를 호출해 주어야 됨
+

@@ -1,0 +1,50 @@
+1.
+client 의 요청(request)가 발생하면
+DispatcherServlet 이, 이 요청을 분석해서
+어떤 Controller 를 선택할 것인지 결정함
+
+2.
+Controller 가 결정되면 해당 Controller 에게
+사용자 요청(request)정보가 담겨있는 
+request 객체(HttpServletRequest)를 전달함
+
+3.
+Model(ModelAndView) 객체가 자동으로 생성됨
+Controller 는 이(ModelAndView) 객체에 어떤 jsp 를 선택할 것인지
+어떤 data 를 사용할 것인지에 대한 정보를 저장함
+
+4.
+ModelAndView 객체에는 jsp 를 구성하기 위해서
+필요한 data 와 이 jsp 자체의 정보가 담겨짐
+ModelAndView 객체 안에 HttpServletRequest(request 객체)가
+담겨있음
+
+5. 
+ModelAndView 객체를 다시 DispatcherServlet 가 받아서
+선택한 jsp 의 정보를 ViewResolver 에게 보냄
+ViewResolver 는 해당 jsp 를 분석해서
+완성된 html code 를 다시 client 쪽의 broswer 로 보냄
+                            ㄴ response
+
+client 로부터 request 를 받으면
+1 ~ 5 단계를 진행해서
+다시 client 쪽으로 response 를 보냄
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

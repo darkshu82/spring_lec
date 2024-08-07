@@ -1,0 +1,86 @@
+
+MyBatis
+  JDBC 를 편리하게 구현하기 위해서 제공되는 Library
+   
+  pom.xml 에 library 추가하기
+  
+  spring jdbc 
+  dbcp2
+  mybatis
+  mybatis-spring
+  
+  (Oracle Driver 는 ojdbc6.jar 파일을 lib 폴더에 저장하고
+   Build Path 에서 설정해서 사용함)
+  
+  pom.xml 에 아래와 같이 태그를 추가함
+  
+  
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>5.2.2.RELEASE</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-dbcp2</artifactId>
+	    <version>2.7.0</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>3.5.4</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis-spring</artifactId>
+	    <version>2.0.3</version>
+	</dependency>
+
+  
+  Properties 파일 만들고 Database 접속 정보 작성하기
+  
+  oracle 
+  
+  database.name=oracle.jdbc.OracleDriver
+  database.url=jdbc:oracle:thin:@localhost:1521:xe
+  database.username=scott
+  database.password=1111
+  
+  
+  Mapper 작성하기
+  
+  public interface MapperInterface{
+  
+  annotation 지정해서 문자열로 query 문 작성하기
+  추상메소드 선언부
+  
+  }
+  
+  Mapper 주입하기
+    ㄴ query 문을 실행시키는 곳에서 Mapper 를 주입 받음
+       @Autowired
+       MapperInterface mapperInterface;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+ 
+ 
+ 
+ 

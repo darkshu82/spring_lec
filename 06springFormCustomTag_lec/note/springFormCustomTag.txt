@@ -1,0 +1,11 @@
+ Spring Form Custom Tag
+ 
+ [형식]
+ <form:태그이름>
+   ㄴ Model 객체에 들어있는 값을
+      form 요소에 주입시킬 수 있음
+ 회원정보 수정 같이
+ Database 에서 값을 가져와서
+ 화면에 보여줄 때 사용함      
+      
+  

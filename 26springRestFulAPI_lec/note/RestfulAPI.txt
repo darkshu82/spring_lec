@@ -1,0 +1,42 @@
+
+Rest API
+  Representational State Transfer API
+
+API
+  Application Programming Interface
+  
+Restful API
+  ㄴ Restful API Serve 는
+     response(응답결과) 를 data 만으로 구성하여
+     client 의 browser 로 보냄 
+     
+     기존에는
+     response(응답결과) 를 HTML, CSS, javascript 로 생성해서 전달함
+     
+     Restful API 는 web, mobile, pc 등 다양한 platform 으로 
+     data 를 전달할 때 사용함
+     
+ 
+ Controller 역할을 하는 Bean 을 생성하려면 
+ @Controller annotation 을 사용함
+ 
+ @Controller annotation 대신
+ @RestController annotation 을 사용하면
+   Restful API 방식으로 사용할 수 있음
+     ㄴ  이 방식으로 Controller 의 메소드를 작성하면
+         return 값이 view 의 이름이 아니라, data 값 자체가 됨
+         
+ 
+   Jackson Databind 의존성을 설정함
+   
+   
+   
+   
+   
+   
+ 
+ 
+ 
+     
+     
+     

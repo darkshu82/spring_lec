@@ -1,0 +1,79 @@
+
+  Interceptor
+  
+  Spring Framework 에서 제공하는
+  AOP 기법을 적용한 Spring MVC 의 한 요소
+   ㄴ Aspect Oriented Programming
+       관점    지향    프로그래밍 
+  
+  Interceptor 는 URL(request) 에 관심을 갖고 있다가
+  request(URL)[요청주소] 가 발생하게 되면 
+  이 request(URL)[요청주소] 를 확인해서
+  Controller 의 메소드를 호출하기 전이나 후에
+  다른 메소드를 호출할 수 있도록
+  프로그램의 흐름을 가로채는 기법 
+  
+  특정 request(URL)[요청주소] 가 발생하면
+  매번 (중복되어서) 특정 작업을 하는 경우
+  Interceptor 를 통해서 처리함
+  
+  로그인이 되어있는지 확인하는 경우,
+  회원 등급을 확인하는 경우에 주로 사용함
+  
+  
+  Interceptor 는 HandlerInterceptor 인터페이스를 implements(구현) 하거나
+  HandlerInterceptorAdapter 클래스를 extends(상속) 한 클래스를 작성하고
+  preHandle() / postHandle() / afterCompletion() 
+  메소드들을 overriding 함
+  
+  preHandle() : Controller 의 메소드가 호출되기 전에 호출됨
+                이 메소드에서 false 을 반환하면 code 의 흐름이 중단되어서
+                더 이상 진행하지 않음 <-- Controller 로 넘어가지 않음
+                                          이후에 호출되는 다른 interceptor 들도 
+                                          실행되지 않음 
+                 
+  postHandle() : Controller 의 메소드가 호출된 후, 
+                 view 처리를 수행하기 전(화면으로 넘어가기 전)에
+                 호출됨 
+                 
+  afterCompletion() : view 처리가 완료되고(화면으로 넘어감)
+                      client 쪽으로 응답결과가 response 되기 전에 호출됨
+  
+  
+  Interceptor 등록하기
+  
+  Java :  
+     ServletAppContext.java 파일에 아래와 같은 메소드 작성
+     public void addInterceptors(InterceptorRegistry registry){ }
+     pattern 등록 방법 : 1) intercept 할 URL 등록 <-- addPathPatterns()
+                         2) intercept 하지 않을 URL 등록 <-- excludePathPatterns() 
+     
+  Xml  :  <interceptors> </interceptors>
+          pattern 등록 방법 : 1) intercept 할 URL 등록 <-- <mapping></mapping>
+                              2) intercept 하지 않을 URL 등록 
+                                    <exclude-mapping></exclude-mapping>    
+              
+  
+    
+  pattern
+  
+  *  : 이름 하나를 의미함. 글자수에 제한이 없음  
+  ** : 하위 이름도 포함하고 글자수에 제한이 없음
+  ?  : 글자 하나를 의미함 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
